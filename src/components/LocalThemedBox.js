@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { ThemeContext } from './ThemeProvider';
 
 const LocalThemedBox = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   const [localTheme, setLocalTheme] = useState('light');
 
   const toggleLocalTheme = () => {
@@ -23,12 +23,12 @@ const LocalThemedBox = () => {
     >
       <p
         id="local-themed-text-container"
-        className={`txt-${theme} txt-${localTheme}`}
+        className={`txt-${localTheme}`}
       >
         Some Text
       </p>
       <button
-        className={`btn btn-${theme} btn-${localTheme}`}
+        className={`btn btn-${theme}`}
         id="local-theme-toggler"
         onClick={() => {
           toggleLocalTheme();
@@ -43,3 +43,4 @@ const LocalThemedBox = () => {
 };
 
 export { LocalThemedBox };
+
