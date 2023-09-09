@@ -1,30 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTheme } from './ThemeProvider';
 
 const LocalThemedBox = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
+  const [localTheme, setLocalTheme] = useState(theme);
+
+  const toggleLocalTheme = () => {
+    setLocalTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
 
   return (
     <div
       id="local-themed-box"
-      className={theme === 'light' ? 'bg-light' : 'bg-dark'}
+      className={localTheme === 'light' ? 'bg-light' : 'bg-dark'}
     >
       <p
         id="local-themed-text-container"
-        className={theme === 'light' ? 'txt-light' : 'txt-dark'}
+        className={localTheme === 'light' ? 'txt-light' : 'txt-dark'}
       >
         Some Text
       </p>
       <button
         id="local-theme-toggler"
-        className={`btn ${theme === 'light' ? 'btn-light' : 'btn-dark'}`}
-        onClick={toggleTheme}
+        className={`btn ${localTheme === 'light' ? 'btn-light' : 'btn-dark'}`}
+        onClick={toggleLocalTheme}
       >
-        Toggle local theme to {theme === 'light' ? 'dark' : 'light'}
+        Toggle local theme to {localTheme === 'light' ? 'dark' : 'light'}
       </button>
     </div>
   );
 };
+
+export { LocalThemedBox };
+
 
 export { LocalThemedBox };
 
