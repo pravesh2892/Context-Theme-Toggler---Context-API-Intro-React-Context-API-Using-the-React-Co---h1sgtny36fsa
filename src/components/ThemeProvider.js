@@ -1,10 +1,11 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, useContext } from 'react';
 
-const ThemeContext = createContext();
+const ThemeContext = React.createContext();
 
 const ThemeProvider = (props) => {
-  const [theme, setTheme] = useState('light'); // Initial theme is light
+  const [theme, setTheme] = useState('light'); 
 
+ 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
@@ -16,4 +17,13 @@ const ThemeProvider = (props) => {
   );
 };
 
-export { ThemeProvider, ThemeContext };
+const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useTheme must be used within a ThemeProvider');
+  }
+  return context;
+};
+
+export { ThemeProvider, useTheme };
+
