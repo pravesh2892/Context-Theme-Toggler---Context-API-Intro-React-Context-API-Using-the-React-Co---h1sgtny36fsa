@@ -34,6 +34,5 @@ const LocalThemedBox = () => {
 export { LocalThemedBox };
 
 
-export { LocalThemedBox };
 
 
